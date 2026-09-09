@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.db
+.venv/
+venv/
+.env
+models/*.pt
+uploads/
+*.mp4
+*.avi
+*.mov
+*.mkv
