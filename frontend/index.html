@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IBVAP — Intelligent Border Video Analytics Platform</title>
 <meta name="description" content="IBVAP turns the IP cameras you already have into live perimeter awareness — camera monitoring, virtual fencing, ANPR, and behavioral analytics in one console.">
+<meta name="theme-color" content="#28405C">
+<meta property="og:title" content="IBVAP — Intelligent Border Video Analytics Platform">
+<meta property="og:description" content="Camera monitoring, virtual fencing, ANPR, and behavioral analytics in one console — built on the cameras you already have.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -45,6 +50,7 @@ img{max-width:100%;display:block;}
 button{font-family:'Inter',sans-serif;cursor:pointer;}
 .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
 :focus-visible{outline:2px solid var(--signal);outline-offset:2px;border-radius:2px;}
+section[id]{scroll-margin-top:76px;}
 
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
@@ -69,12 +75,21 @@ button{font-family:'Inter',sans-serif;cursor:pointer;}
 .nav-links a{font-size:13.5px;color:var(--ink-soft);font-weight:500;transition:color 0.15s ease;}
 .nav-links a:hover{color:var(--ink);}
 @media (min-width:860px){.nav-links{display:flex;}}
-.nav-right{margin-left:auto;display:flex;align-items:center;gap:16px;}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:14px;}
 .nav-status{display:none;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-soft);}
 .nav-status .dot{width:6px;height:6px;border-radius:50%;background:var(--clear);position:relative;}
 .nav-status .dot::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:1px solid var(--clear);opacity:0.5;animation:pulse 2.4s ease-out infinite;}
 @keyframes pulse{0%{transform:scale(0.6);opacity:0.6;}100%{transform:scale(1.9);opacity:0;}}
 @media (min-width:760px){.nav-status{display:flex;}}
+.nav-burger{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--hairline-strong);border-radius:var(--radius);background:transparent;flex-shrink:0;}
+@media (min-width:860px){.nav-burger{display:none;}}
+.nav-burger span{position:relative;width:15px;height:1px;background:var(--ink);display:block;}
+.nav-burger span::before,.nav-burger span::after{content:"";position:absolute;left:0;width:15px;height:1px;background:var(--ink);transition:transform 0.15s ease;}
+.nav-burger span::before{top:-5px;} .nav-burger span::after{top:5px;}
+.nav-mobile{display:none;position:absolute;left:0;right:0;top:62px;background:var(--surface);border-bottom:1px solid var(--hairline);box-shadow:0 12px 24px rgba(27,36,48,0.08);}
+.nav-mobile.open{display:block;}
+.nav-mobile a{display:block;padding:14px 28px;font-size:14px;font-weight:500;color:var(--ink);border-top:1px solid var(--hairline);}
+.nav-mobile a:first-child{border-top:none;}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
   padding:9px 16px;border-radius:var(--radius);font-size:13.5px;font-weight:600;
@@ -87,87 +102,6 @@ button{font-family:'Inter',sans-serif;cursor:pointer;}
 .btn-ghost{background:transparent;color:var(--ink);border-color:var(--hairline-strong);}
 .btn-ghost:hover{border-color:var(--ink-soft);background:rgba(27,36,48,0.03);}
 
-  /* ---------- Hero ---------- */
-.hero{
-  position:relative;
-  overflow:hidden;
-  border-bottom:1px solid var(--hairline);
-
-  /* IBVAP background */
-  background:
-    linear-gradient(
-      90deg,
-      rgba(243,244,241,0.96) 0%,
-      rgba(243,244,241,0.88) 48%,
-      rgba(243,244,241,0.72) 100%
-    ),
-    url("./assets/home-section.png") center center / cover no-repeat;
-}
-
-/* Technical animated overlay */
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-
-  background-image:
-    linear-gradient(rgba(221,225,223,.45) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(221,225,223,.45) 1px, transparent 1px);
-
-  background-size:36px 36px;
-
-  mask-image:
-    radial-gradient(
-      ellipse 75% 80% at 75% 45%,
-      #000 0%,
-      transparent 78%
-    );
-
-  opacity:.55;
-  animation: gridDrift 18s linear infinite;
-}
-
-/* Soft IBVAP scanning glow */
-.hero::after{
-  content:"";
-  position:absolute;
-  width:520px;
-  height:520px;
-  right:-120px;
-  top:50%;
-  transform:translateY(-50%);
-
-  border:1px solid rgba(46,107,79,.16);
-  border-radius:50%;
-
-  box-shadow:
-    0 0 0 70px rgba(46,107,79,.025),
-    0 0 0 140px rgba(46,107,79,.018);
-
-  animation: radarPulse 5s ease-in-out infinite;
-  pointer-events:none;
-}
-
-@keyframes gridDrift{
-  from{
-    background-position:0 0, 0 0;
-  }
-  to{
-    background-position:36px 36px, 36px 36px;
-  }
-}
-
-@keyframes radarPulse{
-  0%,100%{
-    transform:translateY(-50%) scale(.94);
-    opacity:.35;
-  }
-  50%{
-    transform:translateY(-50%) scale(1.04);
-    opacity:.75;
-  }
-}
 /* ---------- Hero ---------- */
 .hero{
   position:relative;overflow:hidden;
@@ -198,8 +132,11 @@ button{font-family:'Inter',sans-serif;cursor:pointer;}
 .hero p.lede{
   font-size:16.5px;color:var(--ink-soft);max-width:480px;margin:0 0 30px 0;
 }
-.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:34px;}
-.hero-note{font-size:12.5px;color:var(--ink-faint);}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px;}
+.hero-note{font-size:12.5px;color:var(--ink-faint);margin-bottom:28px;}
+.hero-trust{display:flex;flex-wrap:wrap;gap:20px;padding-top:20px;border-top:1px solid var(--hairline);}
+.hero-trust div{font-size:12px;color:var(--ink-soft);}
+.hero-trust b{display:block;font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:600;color:var(--ink);line-height:1.1;margin-bottom:2px;}
 
 /* live readout card */
 .readout{
@@ -334,7 +271,7 @@ footer{border-top:1px solid var(--hairline);padding:26px 0;background:var(--surf
 </head>
 <body>
 
-<nav class="nav">
+<nav class="nav" id="nav">
   <div class="nav-inner">
     <a class="brand" href="#top"><span>IBVAP</span><small>Border Video Analytics</small></a>
     <div class="nav-links">
@@ -344,8 +281,14 @@ footer{border-top:1px solid var(--hairline);padding:26px 0;background:var(--surf
     </div>
     <div class="nav-right">
       <div class="nav-status"><span class="dot"></span>All sectors reporting</div>
-      <a class="btn btn-ghost" href="/console">Launch console</a>
+      <a class="btn btn-ghost" href="index.html">Launch console</a>
+      <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span></button>
     </div>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="#capabilities">Capabilities</a>
+    <a href="#how-it-works">How it works</a>
+    <a href="#architecture">Architecture</a>
   </div>
 </nav>
 
@@ -356,10 +299,15 @@ footer{border-top:1px solid var(--hairline);padding:26px 0;background:var(--surf
       <h1>Perimeter awareness, built on the cameras you already have.</h1>
       <p class="lede">IBVAP watches ordinary IP video and turns it into live camera monitoring, software-defined fencing, plate and vehicle reads, and behavior detection — in one console, with no new hardware to mount.</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="/console">Launch console</a>
+        <a class="btn btn-primary" href="index.html">Launch console</a>
         <a class="btn btn-ghost" href="#how-it-works">See how it works</a>
       </div>
       <div class="hero-note">Runs against your existing camera registry — nothing to rewire in the field.</div>
+      <div class="hero-trust">
+        <div><b>6</b>modules in one console</div>
+        <div><b>0</b>new hardware to install</div>
+        <div><b>24/7</b>continuous analysis</div>
+      </div>
     </div>
 
     <div class="readout">
@@ -523,7 +471,7 @@ footer{border-top:1px solid var(--hairline);padding:26px 0;background:var(--surf
       <div>
         <h2>Ask the console, don't dig through logs.</h2>
         <p>The assistant answers directly from the live backend — camera status, open alerts, zone configuration, or a straight "is everything normal right now."</p>
-        <a class="btn btn-primary" href="/console">Launch console</a>
+        <a class="btn btn-primary" href="index.html">Launch console</a>
       </div>
       <div class="chat-mock">
         <div class="bar">Assistant</div>
@@ -546,7 +494,7 @@ footer{border-top:1px solid var(--hairline);padding:26px 0;background:var(--surf
         <p>Open the console to walk through the sector overview, fence editor, and alert log with the current demo data.</p>
       </div>
       <div class="cta-btns">
-        <a class="btn btn-primary" href="/console">Launch console</a>
+        <a class="btn btn-primary" href="index.html">Launch console</a>
         <a class="btn btn-ghost" href="#capabilities">Review capabilities</a>
       </div>
     </div>
@@ -562,7 +510,7 @@ footer{border-top:1px solid var(--hairline);padding:26px 0;background:var(--surf
     <div class="foot-links">
       <a href="#capabilities">Capabilities</a>
       <a href="#how-it-works">How it works</a>
-      <a href="/console">Console</a>
+      <a href="index.html">Console</a>
     </div>
   </div>
 </footer>
@@ -605,6 +553,19 @@ footer{border-top:1px solid var(--hairline);padding:26px 0;background:var(--surf
     });
   }, {threshold:0.15, rootMargin:'0px 0px -40px 0px'});
   revealEls.forEach(el=>io.observe(el));
+})();
+
+(function(){
+  const btn = document.getElementById('nav-burger');
+  const menu = document.getElementById('nav-mobile');
+  if(!btn || !menu) return;
+  btn.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('open'); btn.setAttribute('aria-expanded', 'false');
+  }));
 })();
 </script>
 </body>
